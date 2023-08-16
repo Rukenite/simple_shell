@@ -1,0 +1,5 @@
+#!/bin/bash
+#pushing to github in one command
+git add .
+git commit -m "$(ls -t | head -1)"
+git push
