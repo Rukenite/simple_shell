@@ -3,7 +3,7 @@
 
 int main(int ac, char **av)
 {
-	char *buff;
+	char *buff, *str;
 	size_t n = 32;
 	int num_read;
 
@@ -23,7 +23,15 @@ int main(int ac, char **av)
 		return (1);
 	}
 	
-	printf("I read %d Value read is: %s", num_read, buff);	
+	/* Implementing strtok */
+	str = strtok(buff, " ");
+	while (str)
+	{
+		printf("%s\n", str);
+		str = strtok(NULL, "\n"); // change made was replacing str with NULL
+	}
+	/* Next to implement are execve, fork, wait, sleep, stat*/
+
 	free(buff);
 	
 	return (0);
