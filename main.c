@@ -7,7 +7,7 @@
  * @av: argus passed
  * Returned: 0 on success
  */
-int main(int ac, shar *argv)
+int main(int ac, char *argv)
 {
 	char *line;
 	size_t n, ln;
