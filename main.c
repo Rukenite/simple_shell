@@ -9,7 +9,7 @@
  */
 int main(int ac, char *av[])
 {
-	char *line, char **command;
+	char *line, **command;
 	size_t n, ln;
 
 	while (1)
@@ -19,10 +19,12 @@ int main(int ac, char *av[])
 		printf("prompt>_ ");
 		getline(&line, &n, stdin);
 		fflush(stdin);
+		printf("%s", line);
 		command = _strtok(line);
 		_execve(command);
 
-		free(line);
+		_free(command);
 	}
+	_free(command);
 	return (0);
 }

@@ -10,7 +10,7 @@ int _execve(char **command)
 {
 	pid_t pid;
 	int i = 0;
-	char **cmd[MAXSIZE];
+	char *cmd[MAXSIZE];
 
 	while (i < MAXSIZE)
 		cmd[i] = NULL;

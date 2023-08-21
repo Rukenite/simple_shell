@@ -9,9 +9,9 @@
 char **_strtok(char *lineread)
 {
 	char *cmd, **command;
-	int i = 0, each_word;
+	int i = 0, each_word = 0;
 
-	strtok(linread, "\n");
+	strtok(lineread, "\n");
 	cmd = strtok(lineread, " ");
 	while (cmd)
 	{
@@ -23,8 +23,9 @@ char **_strtok(char *lineread)
 	while (cmd)
 	{
 		command[i] = strdup(cmd);
-		cmd = strdup(NULL, "\0");
+		cmd = strtok(NULL, "\0");
+		i++;
 	}
-
-	return (cmd);
+	free(lineread);
+	return (command);
 }

@@ -10,4 +10,5 @@
 
 int _execve(char **command);
 char **_strtok(char *lineread);
+void _free(char **buff);
 #endif
