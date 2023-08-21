@@ -9,7 +9,7 @@
  */
 int main(int ac, char *argv)
 {
-	char *line;
+	char *line, char **command;
 	size_t n, ln;
 
 	while (1)
@@ -19,6 +19,8 @@ int main(int ac, char *argv)
 		printf("prompt>_ ");
 		getline(&line, &n, stdin);
 		fflush(stdin);
+		command = _strtok(line);
+		_execve(command);
 
 		free(line);
 	}

@@ -7,4 +7,5 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+int _execve(char **command);
 #endif
