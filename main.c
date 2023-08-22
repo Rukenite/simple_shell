@@ -9,8 +9,8 @@
  */
 int main(int ac __attribute__((unused)), char *av[])
 {
-	char *line, **command;
-	size_t n = 1, ln = 1;
+	char *line, **command, *builtins[] = { "help", "exec", "exit", "echo", "cd" };
+	size_t n = 0, ln = 1;
 
 	while (1)
 	{
@@ -18,19 +18,21 @@ int main(int ac __attribute__((unused)), char *av[])
 		line = malloc(n);
 		printf("prompt>_ ");
 		getline(&line, &n, stdin);
-		fflush(stdin);
 		if (feof(stdin))
 		{
 			free(line);
 			putchar('\n');
 			return (0);
 		}
-		command = _strtok(line);
-		if (!command)
+		fflush(stdin);
+		if (*line == '\n')
 		{
-			_free(command);
+			free(line);
 			continue;
 		}
+		command = _strtok(line);
+		if (!command)
+			continue;
 		_execve(command, av[0], ln);
 		_free(command);
 		ln++;
