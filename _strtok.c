@@ -9,18 +9,21 @@
 char **_strtok(char *lineread)
 {
 	char *cmd, **command, *copy;
-	int i = 0, each_word = 0;
+	int i = 0, each_word = 1, sig = 0;
 
-	copy = strdup(strtok(lineread, "\n"));
-	cmd = strtok(lineread, " ");
-	while (cmd)
-	{
+	strtok(lineread, "\n");
+	copy = strdup(lineread);
+	strtok(lineread, " ");
+	while (strtok(NULL, " "))
 		each_word++;
-		cmd = strtok(NULL, " ");
+	sig = 1;
+	if (!sig)
+	{
+		free(lineread);
+		return (NULL);
 	}
 	free(lineread);
 	command = malloc((sizeof(char *) * each_word) + 1);
-	i = 0;
 	while (command[i])
 	{
 		command[i] = NULL;
