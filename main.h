@@ -6,6 +6,10 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#define MAXSIZE 500
 
-int _execve(char **command);
+int _execve(char **command, char *sh, int n);
+char **_strtok(char *lineread);
+void _free(char **buff);
 #endif
+
