@@ -6,21 +6,20 @@
  * @command: command to run
  * Return: 1 on error
  */
-int _execve(char **command)
+int _execve(char **command, char *sh, int n)
 {
 	pid_t pid;
-	int i = 0;
+	int i = 0, j = 0;
 	char *cmd[MAXSIZE];
 
-	while (i < MAXSIZE)
-		cmd[i] = NULL;
-	while (command[i])
-		cmd[i] = command[i++];
 	pid = fork();
 	if (pid == 0)
 	{
-		execve(cmd[0], cmd, NULL);
-		return (-1);
+		if (execve(command[0], command, NULL))
+		{
+		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
+		_free(command);
+		}
 	}
 	else
 		wait(NULL);
