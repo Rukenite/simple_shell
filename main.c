@@ -5,24 +5,36 @@
  *
  * @ac: number of args passed
  * @av: argus passed
- * Returned: 0 on success
+ * Return: 0 on success
  */
-int main(int ac, char *argv)
+int main(int ac, char *av[])
 {
-	char *line, char **command;
-	size_t n, ln;
+        char *line, **command;
+        size_t n = 1, ln = 1;
 
-	while (1)
-	{
-		n = 0;
-		line = malloc(n);
-		printf("prompt>_ ");
-		getline(&line, &n, stdin);
-		fflush(stdin);
-		command = _strtok(line);
-		_execve(command);
-
-		free(line);
-	}
-	return (0);
+        while (1)
+        {
+                n = 0;
+                line = malloc(n);
+                printf("prompt>_ ");
+                getline(&line, &n, stdin);
+                fflush(stdin);
+                if (feof(stdin))
+                {
+                        free(line);
+                        putchar('\n');
+                        return (0);
+                }
+                command = _strtok(line);
+                if (!command)
+  		{
+                        _free(command);
+                        continue;
+                }
+                _execve(command, av[0], ln);
+                _free(command);
+                ln++;
+        }
+        return (0);
 }
+
