@@ -7,8 +7,11 @@
  */
 void _free(char **buff)
 {
-        int i = 0;
+	int i = 0;
 
-        while(buff[i])
-                free(buff[i++]);
+	while (buff[i])
+	{
+		free(buff[i]);
+		i++;
+	}
 }
