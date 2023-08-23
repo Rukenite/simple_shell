@@ -4,7 +4,7 @@
  * _stat - checks if a command/executable exist in path
  *
  * @cmd: command to check
- *
+ * Return: ptr
  */
 char *_stat(char *cmd)
 {
