@@ -16,13 +16,15 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 	while (1)
 	{
 		n = 0;
-		printf("prompt>_ ");
+		if (isatty(STDIN_FILENO))
+			printf("prompt>_ ");
 		line = malloc(n);
 		getline(&line, &n, stdin);
 		if (feof(stdin))
 		{
 			free(line);
-			putchar('\n');
+			if (isatty(STDIN_FILENO))
+				putchar('\n');
 			_exit(0);
 		}
 		fflush(stdin);
