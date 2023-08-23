@@ -12,7 +12,7 @@ char **_strtok(char *lineread)
 	int i = 0, each_word = 1, index = 0;
 
 	strtok(lineread, "\n");
-	copy = strdup(lineread);
+	copy = _strdup(lineread);
 	cmd = strtok(lineread, " ");
 	if (!cmd)
 	{
@@ -34,7 +34,7 @@ char **_strtok(char *lineread)
 	cmd = strtok(copy, " ");
 	while (cmd)
 	{
-		command[index] = strdup(cmd);
+		command[index] = _strdup(cmd);
 		cmd = strtok(NULL, " ");
 		index++;
 	}
