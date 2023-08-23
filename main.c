@@ -5,9 +5,10 @@
  *
  * @ac: number of args passed
  * @av: argus passed
+ * @env: env variables
  * Return: 0 on success
  */
-int main(int ac __attribute__((unused)), char *av[])
+int main(int ac __attribute__((unused)), char *av[], char **env)
 {
 	char *line, **command;
 	size_t n, ln = 0;
@@ -22,7 +23,7 @@ int main(int ac __attribute__((unused)), char *av[])
 		{
 			free(line);
 			putchar('\n');
-			break;
+			_exit(0);
 		}
 		fflush(stdin);
 		ln++;
@@ -34,7 +35,7 @@ int main(int ac __attribute__((unused)), char *av[])
 		command = _strtok(line);
 		if (!command)
 			continue;
-		_execve(command, av[0], ln);
+		_execve(command, av[0], ln, env);
 		_free(command);
 	}
 	return (0);
