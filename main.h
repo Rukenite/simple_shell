@@ -8,7 +8,8 @@
 #include <sys/stat.h>
 #define MAXSIZE 500
 
-int _execve(char **command, char *sh, int n);
+int _execve(char **command, char *sh, int n, char **env);
+int handle_builtins(char *builtin, char **environ);
 char **_strtok(char *lineread);
 void _free(char **buff);
 #endif
