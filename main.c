@@ -11,7 +11,7 @@
 int main(int ac __attribute__((unused)), char *av[], char **env)
 {
 	char *line, *eachline, *cmd, **command;
-	size_t n, len, ln = 0;
+	size_t n, ln = 0;
 
 	while (1)
 	{
