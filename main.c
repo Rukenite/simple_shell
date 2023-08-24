@@ -10,8 +10,8 @@
  */
 int main(int ac __attribute__((unused)), char *av[], char **env)
 {
-	char *line, **command;
-	size_t n, ln = 0;
+	char *line, *eachline, *cmd, **command;
+	size_t n, len, ln = 0;
 
 	while (1)
 	{
@@ -34,7 +34,15 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 			free(line);
 			continue;
 		}
-		command = _strtok(line);
+		eachline = strtok(line, "\n");
+		while (eachline != NULL)
+		{
+			cmd = _strdup(eachline);
+			command = _strtok(cmd);
+			eachline = strtok(NULL, "\n");
+			free(cmd);
+		}
+		free(line);
 		if (!command)
 			continue;
 		_execve(command, av[0], ln, env);

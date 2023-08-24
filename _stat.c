@@ -36,7 +36,10 @@ char *_stat(char *cmd)
 			sprintf(buffer, "%s/%s", tmp, cmd);
 			free(tmp);
 			if (stat(buffer, &status) == 0)
+			{
+				free(cmd);
 				return (buffer);
+			}
 			free(buffer);
 			path = strtok(NULL, ":");
 		}
