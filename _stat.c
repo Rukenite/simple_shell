@@ -38,11 +38,13 @@ char *_stat(char *cmd)
 			if (stat(buffer, &status) == 0)
 			{
 				free(cmd);
+				free(paths);
 				return (buffer);
 			}
 			free(buffer);
 			path = strtok(NULL, ":");
 		}
 	}
+	free(paths);
 	return (NULL);
 }

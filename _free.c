@@ -14,4 +14,5 @@ void _free(char **buff)
 		free(buff[i]);
 		i++;
 	}
+	free(buff);
 }

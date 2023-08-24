@@ -15,7 +15,10 @@ int _execve(char **command, char *sh, int n, char **env)
 	char *com;
 
 	if (handle_builtins(command[0], env) == 0)
+	{
+		_free(command);
 		return (0);
+	}
 	com = _stat(command[0]);
 	if (!com)
 	{
