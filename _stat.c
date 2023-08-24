@@ -12,6 +12,8 @@ char *_stat(char *cmd)
 	struct stat status;
 	int i = 0;
 
+	if (*cmd == '.')
+		return (cmd);
 	if (*cmd == '/')
 	{
 		if (stat(cmd, &status) != 0)

@@ -26,7 +26,10 @@ int _execve(char **command, char *sh, int n, char **env)
 	command[0] = com;
 	pid = fork();
 	if (pid == 0)
+	{
 		execve(command[0], command, env);
+		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
+	}
 	else
 		wait(NULL);
 	return (0);

@@ -25,8 +25,8 @@ char **_strtok(char *lineread)
 		cmd = strtok(NULL, " ");
 	}
 	free(lineread);
-	command = malloc((sizeof(char *) * each_word) + 1);
-	while (i < (each_word + 1))
+	command = malloc((sizeof(char *) * each_word));
+	while (i < (each_word))
 	{
 		command[i] = NULL;
 		i++;

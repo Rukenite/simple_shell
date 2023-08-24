@@ -15,7 +15,7 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 
 	while (1)
 	{
-		n = 0;
+		n = 1;
 		if (isatty(STDIN_FILENO))
 			printf("prompt>_ ");
 		line = malloc(n);
