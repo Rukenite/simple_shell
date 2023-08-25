@@ -45,10 +45,10 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 		free(line);
 		if (!command)
 			continue;
-		if (_execve(command, av[0], ln, env) == 1)
+		if (_execve(command, av[0], ln, env) == -1)
 			continue;
 		_free(command);
 	}
-	return (0);
+	return (1);
 }
 
