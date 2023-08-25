@@ -30,7 +30,7 @@ int _execve(char **command, char *sh, int n, char **env)
 	if (!com)
 	{
 		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
-		free(com);
+		_free(command);
 		return (1);
 	}
 	command[0] = com;

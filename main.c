@@ -37,7 +37,7 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 		eachline = strtok(line, "\n");
 		while (eachline != NULL)
 		{
-			cmd = _strdup(eachline);
+			cmd = strdup(eachline);
 			command = _strtok(cmd);
 			eachline = strtok(NULL, "\n");
 			free(cmd);

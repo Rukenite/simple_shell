@@ -20,13 +20,13 @@ char *_stat(char *cmd)
 			return (NULL);
 		return (cmd);
 	}
-	paths = _strdup(getenv("PATH"));
+	paths = strdup(getenv("PATH"));
 	if (paths)
 	{
 		path = strtok(paths, ":");
 		while (path)
 		{
-			tmp = _strdup(path);
+			tmp = strdup(path);
 			buffer = malloc(500);
 			while (i < 500)
 			{
