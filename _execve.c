@@ -19,7 +19,7 @@ int _execve(char **command, char *sh, int n, char **env)
 	if (stat == 0)
 	{
 		_free(command);
-		return (0);
+		return (1);
 	}
 	else if (stat < 0)
 	{
