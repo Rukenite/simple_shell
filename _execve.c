@@ -13,10 +13,17 @@ int _execve(char **command, char *sh, int n, char **env)
 {
 	pid_t pid;
 	char *com;
+	int stat;
 
-	if (handle_builtins(command, env) == 0)
+	stat = handle_builtins(command, env);
+	if (stat == 0)
 	{
 		_free(command);
+		return (0);
+	}
+	else if (stat < 0)
+	{
+		dprintf(STDERR_FILENO, "%s: %d: exit: Illegal number: %d\n", sh, n, stat);
 		return (1);
 	}
 	com = _stat(command[0]);
