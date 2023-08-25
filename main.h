@@ -9,7 +9,7 @@
 #define MAXSIZE 500
 
 int _execve(char **command, char *sh, int n, char **env);
-int handle_builtins(char *builtin, char **environ);
+int handle_builtins(char **builtin, char **environ);
 char **_strtok(char *lineread);
 char *_strdup(char *str);
 void _free(char **buff);

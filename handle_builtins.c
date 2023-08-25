@@ -19,11 +19,14 @@ void _env(char **environ)
  * @environ: environmental variables
  * Return: 0 on Success.
  */
-int handle_builtins(char *builtin, char **environ)
+int handle_builtins(char **builtin, char **environ)
 {
-	if (strcmp(builtin, "exit") == 0)
+	if (strcmp(builtin[0], "exit") == 0)
+	{
+		_free(builtin);
 		_exit(0);
-	else if (strcmp(builtin, "env") == 0)
+	}
+	else if (strcmp(builtin[0], "env") == 0)
 	{
 		_env(environ);
 		return (0);
