@@ -25,7 +25,7 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 			free(line);
 			if (isatty(STDIN_FILENO))
 				putchar('\n');
-			_exit(0);
+			_exit(127);
 		}
 		fflush(stdin);
 		ln++;
