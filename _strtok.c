@@ -18,7 +18,7 @@ char **_strtok(char *lineread)
 	while (cmd)
 	{
 		command[i] = strdup(cmd);
-		cmd = strtok(NULL, "\0");
+		cmd = strtok(NULL, " ");
 		i++;
 	}
 	command[i] = NULL;
