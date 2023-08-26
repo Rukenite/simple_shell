@@ -15,6 +15,8 @@ void test_eof(char *line, int stcode)
 			putchar('\n');
 		exit(stcode);
 	}
+	else if (!feof(stdin) && stcode == 2)
+		exit(stcode);
 }
 /**
  * main - a simple command line interpreter
