@@ -28,9 +28,11 @@ int handle_builtins(char **builtin, char **environ)
 		if (builtin[1])
 		{
 			status = atoi(builtin[1]);
-			_free(builtin);
 			if (status <= 0)
+			{
+				_free(builtin);
 				return (2);
+			}
 		}
 		_free(builtin);
 		exit(status);
