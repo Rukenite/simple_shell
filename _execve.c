@@ -37,7 +37,7 @@ int _execve(char **command, char *sh, int n, char **env)
 			exit(127);
 		}
 		command[0] = com;
-		execve(command[0], command. env);
+		execve(command[0], command, env);
 	}
 	else
 		wait(&stats);
