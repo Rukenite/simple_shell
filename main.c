@@ -56,6 +56,11 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 		{
 			cmd = strdup(eachline);
 			command = _strtok(cmd);
+			if (!command)
+			{
+				eachline = strtok(NULL, "\n");
+				continue;
+			}
 			eachline = strtok(NULL, "\n");
 			free(cmd);
 		}
