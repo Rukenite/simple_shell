@@ -26,19 +26,18 @@ int _execve(char **command, char *sh, int n, char **env)
 		dprintf(STDERR_FILENO, "%s: %d: exit: Illegal number: %d\n", sh, n, stat);
 		return (-1);
 	}
-	com = _stat(command[0]);
-	if (!com)
-	{
-		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
-		_free(command);
-		return (-1);
-	}
-	command[0] = com;
 	pid = fork();
 	if (pid == 0)
 	{
-		execve(command[0], command, env);
-		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
+		com = _stat(command[0]);
+		if (!com)
+		{
+			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
+			free(command);
+			exit(127);
+		}
+		command[0] = com;
+		execve(command[0], command. env);
 	}
 	else
 		wait(&stats);
