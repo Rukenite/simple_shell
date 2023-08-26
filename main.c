@@ -61,5 +61,5 @@ int main(int ac __attribute__((unused)), char *av[], char **env)
 			continue;
 		_free(command);
 	}
-	return (1);
+	return (0);
 }

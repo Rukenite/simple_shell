@@ -34,7 +34,7 @@ int _execve(char **command, char *sh, int n, char **env, int *st)
 		{
 			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
 			_free(command);
-			exit(0);
+			exit(127);
 		}
 		command[0] = com;
 		execve(command[0], command, env);
@@ -42,7 +42,7 @@ int _execve(char **command, char *sh, int n, char **env, int *st)
 	else
 	{
 		wait(&stats);
-		stat = WEXITSTATUS(stats);
+		*st = WEXITSTATUS(stats);
 	}
-	return (stat);
+	return (56);
 }
