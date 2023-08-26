@@ -29,7 +29,7 @@ int handle_builtins(char **builtin, char **environ)
 		{
 			status = atoi(builtin[1]);
 			_free(builtin);
-			if (status == 0 || status < 0)
+			if (status <= 0)
 				return (2);
 		}
 		_free(builtin);

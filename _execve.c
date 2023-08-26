@@ -6,7 +6,7 @@
  * @command: command to run
  * @sh : shell name
  * @n: line number
- * @env: shell env variables.
+ +* @env: shell env variables.
  * @st: pointer to status code
  *
  * Return: 0 on success
@@ -17,8 +17,7 @@ int _execve(char **command, char *sh, int n, char **env, int *st)
 	char *com;
 	int stat, stats;
 
-	*st = handle_builtins(command, env);
-	stat = *st;
+	stat = handle_builtins(command, env);
 	if (stat == 0)
 		return (-1);
 	else if (stat == 2)
@@ -44,5 +43,5 @@ int _execve(char **command, char *sh, int n, char **env, int *st)
 		wait(&stats);
 		*st = WEXITSTATUS(stats);
 	}
-	return (56);
+	return (0);
 }
