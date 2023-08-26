@@ -26,11 +26,14 @@ int handle_builtins(char **builtin, char **environ)
 	if (strcmp(builtin[0], "exit") == 0)
 	{
 		if (builtin[1])
+		{
 			status = atoi(builtin[1]);
+			_free(builtin);
+			if (status == 0 || status < 0)
+				return (2);
+		}
 		_free(builtin);
-		if (status < 0)
-			return (status);
-		_exit(status);
+		exit(status);
 	}
 	else if (strcmp(builtin[0], "env") == 0)
 	{

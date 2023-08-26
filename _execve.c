@@ -7,21 +7,21 @@
  * @sh : shell name
  * @n: line number
  * @env: shell env variables.
+ * @st: pointer to status code
+ *
  * Return: 0 on success
  */
-int _execve(char **command, char *sh, int n, char **env)
+int _execve(char **command, char *sh, int n, char **env, int *st)
 {
 	pid_t pid;
 	char *com;
 	int stat, stats;
 
-	stat = handle_builtins(command, env);
+	*st = handle_builtins(command, env);
+	stat = *st;
 	if (stat == 0)
-	{
-		_free(command);
 		return (-1);
-	}
-	else if (stat < 0)
+	else if (stat == 2)
 	{
 		dprintf(STDERR_FILENO, "%s: %d: exit: Illegal number: %d\n", sh, n, stat);
 		return (-1);
@@ -33,15 +33,16 @@ int _execve(char **command, char *sh, int n, char **env)
 		if (!com)
 		{
 			dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", sh, n, command[0]);
-			free(command);
-			exit(127);
+			_free(command);
+			exit(0);
 		}
 		command[0] = com;
 		execve(command[0], command, env);
 	}
 	else
+	{
 		wait(&stats);
-	if (feof(stdin))
-		return (WEXITSTATUS(stats));
-	return (0);
+		stat = WEXITSTATUS(stats);
+	}
+	return (stat);
 }
