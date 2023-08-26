@@ -38,6 +38,7 @@ int handle_builtins(char **builtin, char **environ)
 	else if (strcmp(builtin[0], "env") == 0)
 	{
 		_env(environ);
+		_free(builtin);
 		return (0);
 	}
 	return (1);
